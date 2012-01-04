@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project name="dashboard" basedir="." default="build">
+
+	<property name="build" value="build" />
+	<property name="dist" value="dist1" />
+	<property name="src"   value="src/main/java" />
+	<property name="resources"  value="src/main/resources" />
+	<property name="conf"  value="conf" />
+	<property name="lib"   value="lib" />
+	<property name="web"   value="webcontent" />
+	<property name="version" value="0.1" />
+	<property name="jbossLocation" value="C:/Siva/Java/jboss-5.1.0.GA/" />
+	<property name="servletLib" value="${jbossLocation}/common/lib" />
+	<property name="deployDir" value="${jbossLocation}/server/default/deploy/" />
+	<property name="warFile" value="${dist}/${ant.project.name}.war" />
+	<property name="earFile" value="${dist}/${ant.project.name}-${version}.ear" />
+	
+	<path id="build.classpath">
+		<fileset dir="${lib}" includes="**/*.jar" />
+		<fileset dir="${servletLib}" includes="**/*.jar" />
+	</path>
+	
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<tstamp />
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}" optimize="on">
+			<classpath refid="build.classpath" />
+		</javac>
+		<copy todir="${build}">
+			<fileset dir="${resources}"/>
+		</copy>
+	</target>
+	
+	<target name="build-core" depends="compile">		
+		<jar destfile="${dist}/${ant.project.name}-core.jar" basedir="${build}">
+			<include name="com/sivalabs/dashboard/model/*.class"/>
+			<include name="com/sivalabs/dashboard/utils/*.class"/>
+		</jar>
+	</target>
+	
+	<target name="build-ejb-client" depends="compile">		
+		<jar destfile="${dist}/${ant.project.name}-ejb-client.jar" basedir="${build}">
+			<include name="com/sivalabs/dashboard/bo/*.class"/>
+		</jar>
+	</target>
+	
+	<target name="build-ejb" depends="compile">
+		<jar destfile="${dist}/${ant.project.name}-ejb.jar" basedir="${build}">
+			<include name="com/sivalabs/dashboard/bo/**/*"/>
+			<exclude name="com/sivalabs/dashboard/bo/*.class"/>
+		</jar>
+	</target>
+	
+	<target name="build-war" depends="compile">
+		<mkdir dir="${build}/war"/>
+		<copy todir="${build}/war">
+			<fileset dir="${web}"/>
+		</copy>
+		<copy todir="${build}/war/WEB-INF/lib">
+			<fileset dir="${lib}"/>
+		</copy>
+		<copy todir="${build}/war/WEB-INF/lib">
+			<fileset dir="${dist}">
+					<include name="${ant.project.name}-core.jar"/>
+				<include name="${ant.project.name}-ejb-client.jar"/>
+							
+				</fileset>
+		</copy>
+		
+		<copy todir="${build}/war/WEB-INF/classes">
+			<fileset dir="${build}" includes="com/sivalabs/dashboard/web/**/*"/>
+		</copy>
+		<war destfile="${dist}/${ant.project.name}.war" webxml="${build}/war/WEB-INF/web.xml">
+		  <zipfileset dir="${build}/war"  /> 
+		</war>
+	</target>
+			
+	<target name="build-ear" depends="build-core, build-ejb-client, build-ejb, build-war">
+		<ear destfile="${dist}/${ant.project.name}-${version}.ear" appxml="${conf}/application.xml">
+			<fileset dir="${dist}" includes="*.war, *.jar" />
+		</ear>
+	</target>
+	
+	<target name="build" depends="build-ear">
+		
+	</target>
+		
+	<target name="deploy" depends="build">
+		<copy todir="${deployDir}">
+			<fileset dir="${dist}" includes="*.ear" />
+		</copy>
+	</target>
+</project>
