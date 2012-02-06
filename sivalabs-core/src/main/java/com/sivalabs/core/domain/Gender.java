@@ -1,10 +1,7 @@
-/**
- * 
- */
 package com.sivalabs.core.domain;
 
 /**
- * @author skatam
+ * @author SivaLabs
  *
  */
 public enum Gender {

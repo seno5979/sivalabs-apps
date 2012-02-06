@@ -1,12 +1,9 @@
-/**
- * 
- */
 package com.sivalabs.core.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 /**
- * @author skatam
+ * @author SivaLabs
  *
  */
 public abstract class DomainObject

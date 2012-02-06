@@ -14,7 +14,7 @@
     <tag>
 		<description>Outputs the absolute URL</description>
 	    <name>absoluteURL</name>
-		<tag-class>com.sivalabs.core.web.tags.AbsoluteURLTag</tag-class>
+		<tag-class>com.sivalabs.core.web.customtags.AbsoluteURLTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 		    <name>path</name>
@@ -26,7 +26,7 @@
     <tag>
 		<description>Outputs the relative URL</description>
 	    <name>relativeURL</name>
-		<tag-class>com.sivalabs.core.web.tags.RelativeURLTag</tag-class>
+		<tag-class>com.sivalabs.core.web.customtags.RelativeURLTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 		    <name>path</name>
@@ -38,7 +38,7 @@
     <tag>
 		<description>Outputs the JavaScript include tag</description>
 	    <name>jsInclude</name>
-		<tag-class>com.sivalabs.core.web.tags.JSIncludeTag</tag-class>
+		<tag-class>com.sivalabs.core.web.customtags.JSIncludeTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 		    <name>path</name>
@@ -50,7 +50,7 @@
     <tag>
 		<description>Outputs the CSS include tag</description>
 	    <name>cssInclude</name>
-		<tag-class>com.sivalabs.core.web.tags.StyleSheetIncludeTag</tag-class>
+		<tag-class>com.sivalabs.core.web.customtags.StyleSheetIncludeTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 		    <name>path</name>
