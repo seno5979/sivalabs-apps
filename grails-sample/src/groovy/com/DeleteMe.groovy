@@ -1,6 +1,0 @@
-package com
-
-class DeleteMe
-{
-
-}
