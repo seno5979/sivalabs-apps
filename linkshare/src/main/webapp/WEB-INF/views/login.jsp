@@ -13,7 +13,7 @@
 	</script>
 </head>
 <body>
-	<div style="width:400px; margin-right:auto; margin-left:auto; border:1px solid #000;">
+	<div style="width:400px; margin-right:auto; margin-left:auto; border:1px solid #000; border-radius: 5px;">
 	
 	<form:form action="login.htm" commandName="user" method="post">
 		<table>

@@ -12,7 +12,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.sivalabs.linkshare.UserNotLoggedinException;
 import com.sivalabs.linkshare.entities.User;
-import com.sivalabs.linkshare.web.controllers.ControllerHelper;
 
 /**
  * @author skatam
@@ -36,7 +35,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter
 			logger.debug("Secured URL : "+uri);
 			User userData;
 			try {
-				userData = ControllerHelper.getLoggedInUser(request.getSession());
+				userData =  (User) request.getSession().getAttribute("LOGIN_USER");
 				if (userData == null) {
 					go = false;
 				}

@@ -4,9 +4,6 @@ import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sivalabs.linkshare.entities.Link;
 import com.sivalabs.linkshare.entities.User;
-import com.sivalabs.linkshare.services.LinkShareService;
 
 
 /**
@@ -26,12 +22,8 @@ import com.sivalabs.linkshare.services.LinkShareService;
  *
  */
 @Controller
-public class LinkShareController 
+public class LinkShareController extends BaseController
 {
-	private static Logger logger = LoggerFactory.getLogger(LinkShareController.class);
-	
-	@Autowired
-	private LinkShareService linkShareService;
 	
 	@RequestMapping(value="secure/postLink", method=RequestMethod.GET)
 	public String newLinkForm(Model model) 
@@ -52,10 +44,10 @@ public class LinkShareController
 			url = "http://"+url;
 		}
 		link.setUrl(url);
-		User loginUser = ControllerHelper.getLoggedInUser(session);
+		User loginUser = this.getLoggedInUser(session);
 		link.setPostedBy(loginUser);
 		link.setPostedOn(new Date());
-		linkShareService.saveLink(link);
+		this.getLinkShareService().saveLink(link);
 		logger.debug("Link posted successfully.");
 		redirectAttributes.addFlashAttribute("message", "Link posted successfully.");
 		return "redirect:/home.htm";

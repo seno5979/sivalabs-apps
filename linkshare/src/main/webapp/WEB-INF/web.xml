@@ -32,7 +32,7 @@
   </context-param>
   <context-param>
 		<param-name>spring.profiles.active</param-name>
-		<param-value>cloud</param-value>
+		<param-value>dev</param-value>
 	</context-param>
   
   	<filter>
