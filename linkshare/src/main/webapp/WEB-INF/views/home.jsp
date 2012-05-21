@@ -8,7 +8,7 @@
 		input.text { margin-bottom:12px; width:95%; padding: .4em; }
 		fieldset { padding:0; border:0; margin-top:25px; }
 		h1 { font-size: 1.2em; margin: .6em 0; }
-		div#links-contain { width: 850px; margin: 20px 0; }
+		div#links-contain { width: 850px; margin: 20px 0; height: 400px;}
 		div#links-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
 		div#links-contain table td, div#links-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
 		.ui-dialog .ui-state-error { padding: .3em; }
@@ -81,6 +81,7 @@
 		<input type="text" name="url" id="url" value="" class="text ui-widget-content ui-corner-all" />
 	</fieldset>
 	</form>
+	
 </div>
 	<div>
 		${message}
@@ -107,7 +108,7 @@
 				<td>
 					<a href="${link.url}">${link.title}</a>
 				</td>				
-				<td><c:out value="${link.postedBy.firstName}"></c:out> </td>
+				<td><c:out value="${link.postedBy.firstname}"></c:out> </td>
 				<td><fmt:formatDate value="${link.postedOn}" pattern="dd/MM/yyyy hh:mm:ss"/></td>				
 			</tr>
 			</c:forEach>
