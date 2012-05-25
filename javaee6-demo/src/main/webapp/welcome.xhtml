@@ -6,10 +6,15 @@
 
 <h:head></h:head> 
 <body> 
+	Welcome <a href="userProfile.xhtml">#{LOGIN_USER_KEY.userName}</a> &nbsp;
+			<a href="changePwd.xhtml">Change Password</a>
 	<h:form>
-	Hello #{userController.authorName}
-	<h:commandButton action="#{userController.executeTests()}" value="Click" />
+	<h1>Forums</h1>
+	<h:dataTable value="#{forumController.forums}" var="forum">
+		<h:column>
+		<p><h:commandLink value="#{forum.forumName}" action="#{forumController.showForum(forum.forumId)}"></h:commandLink> </p>
+		</h:column>
+	</h:dataTable>
 	</h:form>
-	
 </body> 
 </html>

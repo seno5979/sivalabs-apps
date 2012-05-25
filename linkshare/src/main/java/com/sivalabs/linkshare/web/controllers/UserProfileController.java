@@ -60,7 +60,7 @@ public class UserProfileController extends BaseController
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String showLoginForm(Model model) 
 	{
-		model.addAttribute("user", new User());
+		model.addAttribute("userLogon", new UserLogon());
 		return "login";
 	}
 	

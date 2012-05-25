@@ -9,23 +9,23 @@
 			<tbody>							
 				<tr>
 					<td width="100" align="right">UserName* </td>
-					<td><form:input path="userName"></form:input>
-					<form:errors cssStyle="color:red" path="userName"/></td>
+					<td><form:input path="userLogon.username"></form:input>
+					<form:errors cssStyle="color:red" path="userLogon.username"/></td>
 				</tr>
 				<tr>
 					<td width="100" align="right">Password* </td>
-					<td><form:password path="password"></form:password>
-					<form:errors cssStyle="color:red" path="password"/></td>
+					<td><form:password path="userLogon.password"></form:password>
+					<form:errors cssStyle="color:red" path="userLogon.password"/></td>
 				</tr>
 				<tr>
 					<td width="100" align="right">FirstName </td>
-					<td><form:input path="firstName"></form:input>
-					<form:errors cssStyle="color:red" path="firstName"/></td>
+					<td><form:input path="firstname"></form:input>
+					<form:errors cssStyle="color:red" path="firstname"/></td>
 				</tr>
 				<tr>
 					<td width="100" align="right">LastName</td>
-					<td><form:input path="lastName"></form:input>
-					<form:errors cssStyle="color:red" path="lastName"/></td>
+					<td><form:input path="lastname"></form:input>
+					<form:errors cssStyle="color:red" path="lastname"/></td>
 				</tr>
 				<tr>
 					<td width="100" align="right">Email </td>
@@ -61,7 +61,7 @@
 		    <tr style="border: 1; border-collapse: collapse;">
 				<td><c:out value="${link.title}"></c:out></td>
 				<td><c:out value="${link.url}"></c:out></td>
-				<td><c:out value="${link.postedBy.firstName}"></c:out> </td>
+				<td><c:out value="${link.postedBy.firstname}"></c:out> </td>
 				<td><fmt:formatDate value="${link.postedOn}" pattern="dd/MM/yyyy hh:mm:ss"/></td>				
 			</tr>
 			</c:forEach>

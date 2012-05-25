@@ -51,9 +51,9 @@ public class BaseController
 	
 
 	
-	public User getLoggedInUser(HttpSession session) {
+	public static User getLoggedInUser(HttpSession session) {
 		User loginUser = (User) session.getAttribute(LOGIN_USER_KEY);
-		logger.debug("loginUser :"+loginUser);
+		//logger.debug("loginUser :"+loginUser);
 		if(loginUser == null)
 		{
 			throw new UserNotLoggedinException();
@@ -61,11 +61,11 @@ public class BaseController
 		return loginUser;
 	}
 	
-	public void setLoggedInUser(HttpSession session, User user) {
+	public static void setLoggedInUser(HttpSession session, User user) {
 		session.setAttribute(LOGIN_USER_KEY, user);
 	}
 	
-	public boolean isUserLoggedIn(HttpSession session) {
+	public static boolean isUserLoggedIn(HttpSession session) {
 		return (session.getAttribute(LOGIN_USER_KEY) != null);
 	}
 }

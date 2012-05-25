@@ -1,3 +1,4 @@
+<%@page import="com.sivalabs.linkshare.web.controllers.BaseController"%>
 <%@page import="com.sivalabs.linkshare.web.controllers.ControllerHelper"%>
 <%@page import="com.sivalabs.linkshare.entities.User"%>
 <%@ include file="../taglib.jsp" %>
@@ -39,13 +40,13 @@
 		 	<td colspan="2" class="userBanner">
 		 		<span class="textLabel">
 				 <%
-				 	boolean userLoggedin = ControllerHelper.isUserLoggedIn(session);
+				 	boolean userLoggedin = BaseController.isUserLoggedIn(session);
 				 	if(userLoggedin)
 				 	{  		
-				 		User user = ControllerHelper.getLoggedInUser(session);
+				 		User user = BaseController.getLoggedInUser(session);
 				 	%>
 				 		Welcome <a class="link" href='<spring:url value="/showUserProfile.htm"/>'>
-				 					<%=user.getFirstName()%> <%=user.getLastName()%>
+				 					<%=user.getFirstname()%> <%=user.getLastname()%>
 				 				</a> &nbsp; | <a class="link" href='<spring:url value="/logout.htm"/>'>Logout</a>
 				 	<%}
 				 	else
