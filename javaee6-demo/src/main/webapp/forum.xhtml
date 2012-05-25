@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+<title>Forum</title>
+</h:head> 
+<body> 
+	<h:form>
+	<a href="welcome.xhtml">Home</a>
+	<h1>Forum: #{forumController.currentForum.forumName}</h1>
+	<p><h:commandLink value="New Topic"  action="topic" /></p>
+	<h1>Topics</h1>
+	<h:dataTable value="#{forumController.getTopics()}" var="topic">
+		<h:column>
+		#{topic.title}
+		</h:column>
+	</h:dataTable>
+	</h:form>
+</body> 
+</html>

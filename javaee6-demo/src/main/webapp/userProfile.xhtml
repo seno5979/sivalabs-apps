@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+<title>User Profile</title>
+</h:head> 
+<body> 
+	<p><a href="welcome.xhtml">Home</a></p>
+	<h:form >
+		
+		<h:panelGrid columns="2">
+			<h:outputLabel value="UserName" />
+			<h:inputText value="#{userController.currentUser.userName}"  
+						 required="true"
+						 requiredMessage="UserName is required"/>
+			
+			<h:outputLabel value="Password" />
+			<h:inputSecret value="#{userController.currentUser.password}"  
+						 required="true"
+						 requiredMessage="Password is required"/>
+			
+			<h:outputLabel value="FirstName" />
+			<h:inputText value="#{userController.currentUser.firstName}"  
+						 required="true"
+						 requiredMessage="FirstName is required"/>
+			
+			<h:outputLabel value="LastName" />
+			<h:inputText value="#{userController.currentUser.lastName}" />
+			
+			<h:outputLabel value="Email" />
+			<h:inputText value="#{userController.currentUser.email}"  
+						 required="true"
+						 requiredMessage="Email is required"/>
+						 
+			
+		</h:panelGrid>
+	</h:form>
+	
+</body> 
+</html>

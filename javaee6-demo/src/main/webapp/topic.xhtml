@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head>
+<title>Forum</title>
+</h:head> 
+<body> 
+	<a href="welcome.xhtml">Home</a>
+	<h1>Forum: #{forumController.currentForum.forumName}</h1>
+	<h1>New Topic</h1>
+	<h:form>
+						
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Title" />
+			<h:inputText value="#{forumController.newTopicRequest.title}" />
+			
+			<h:outputLabel value="Message" />
+			<h:inputTextarea value="#{forumController.newTopicRequest.message}" />
+			
+			<h:commandButton value="Submit" action="#{forumController.saveNewTopic()}" />
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
