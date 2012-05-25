@@ -15,7 +15,12 @@
 	<h1>Topics</h1>
 	<h:dataTable value="#{forumController.getTopics()}" var="topic">
 		<h:column>
-		#{topic.title}
+			<f:facet name="header">TopicId</f:facet>
+			#{topic.topicId}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Title</f:facet>
+			#{topic.title}
 		</h:column>
 	</h:dataTable>
 	</h:form>

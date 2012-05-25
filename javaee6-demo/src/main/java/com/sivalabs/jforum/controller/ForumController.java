@@ -25,7 +25,6 @@ public class ForumController
 	private TopicServiceBean topicServiceBean;
 	
 	private Forum currentForum;
-	//private Integer currentForumId;
 	private Topic currentTopic;
 	private NewTopicRequest newTopicRequest;
 	
@@ -38,26 +37,23 @@ public class ForumController
 		{
 			forums = forumServiceBean.findAll();
 		}
-		System.out.println(forums.size());
-		//Forum[] forumArray = new Forum[forums.size()];
-		return forums;//(Forum[]) forums.toArray(forumArray);
+		return forums;
 	}
 	
 	public String showForum(Integer forumId)
 	{
-		//this.setCurrentForumId(forumId);
 		this.setCurrentForum(this.forumServiceBean.findByID(forumId));
+		this.topicList = null;
 		return "forum";
 	}
 	public List<Topic> getTopics()
 	{
 		System.out.println("current forum id :"+getCurrentForum().getForumId());
-		// if(topicList ==null){
-		System.out.println(this.forumServiceBean.hashCode());
-			// topicList = this.forumServiceBean.findByID(getCurrentForum().getForumId()).getTopicList();
-			topicList = this.topicServiceBean.getTopics(getCurrentForum().getForumId());
-		// }
-		 System.out.println("--->"+topicList.size());
+		 if(topicList ==null)
+		 {
+			 topicList = this.forumServiceBean.findByID(getCurrentForum().getForumId()).getTopicList();
+			//topicList = this.topicServiceBean.getTopics(getCurrentForum().getForumId());
+		 }
 		 return topicList;
 	}
 	
@@ -91,16 +87,6 @@ public class ForumController
 		}
 		return view;
 	}
-
-	/*public Integer getCurrentForumId()
-	{
-		return currentForumId;
-	}
-
-	public void setCurrentForumId(Integer currentForumId)
-	{
-		this.currentForumId = currentForumId;
-	}*/
 
 	public Forum getCurrentForum()
 	{

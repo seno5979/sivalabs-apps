@@ -29,6 +29,7 @@ public class UserController
 	private String password = "admin";
 	
 	private User user;
+	private User currentUser;
 	private ChangePwdRequest changePwdRequest;
 	
 	public String login()
@@ -64,9 +65,10 @@ public class UserController
 		
 	}
 
-	public static User getCurrentUser()
+	public User getCurrentUser()
 	{
-		return JSFUtils.getCurrentUser();
+		currentUser =JSFUtils.getCurrentUser();
+		return currentUser;
 	}
 	public String changePwd()
 	{
