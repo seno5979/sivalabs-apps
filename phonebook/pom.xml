@@ -145,13 +145,6 @@
 			<scope>compile</scope>
 		</dependency>
 		
-		<!-- <dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>4.2.0.FINAL</version>
-			<scope>runtime</scope>
-		</dependency> -->
-		
 		<dependency>
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>
