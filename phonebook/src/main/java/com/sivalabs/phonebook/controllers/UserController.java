@@ -4,6 +4,7 @@
 package com.sivalabs.phonebook.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,13 @@ public class UserController
 	public String home(Model model) {
 		return "home";
 	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(Model model, HttpSession session) {
+		session.invalidate();
+		return "redirect:login.htm";
+	}
+	
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginForm(Model model) {

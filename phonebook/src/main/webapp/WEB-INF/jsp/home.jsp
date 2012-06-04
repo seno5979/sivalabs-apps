@@ -30,9 +30,7 @@
 			<form:errors path="*"></form:errors>
 			${MSG}
 		</p>
-		<div>
-		<a href="showUser.htm">My Account</a>&nbsp;&nbsp;&nbsp;<a href="changePwd.htm">Change Pwd</a>
-		</div>
+		
 		<p>Enter Name : <input type="text" name="searchCriteria"> 
 		<input type="submit" value="Search"> 
 		<input type="button" value="Add New" onclick="javascript:newContactForm();">
