@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.sivalabs.phonebook.entities.User;
-  
+
 @Component
 public class AuthenticationInterceptor extends HandlerInterceptorAdapter
 {

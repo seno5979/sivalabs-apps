@@ -8,14 +8,29 @@
 </head>
 <body>
 	<form:form method="post" action="login.htm" commandName="user">
-		<p>
+		<div class="error">
 			<form:errors path="*"></form:errors>
-			${MSG}
-		</p>
-		<p>UserName : <form:input path="userName"/></p>
-		<p>Password : <form:password path="password"/></p>
-		<p><input type="submit" value="Login"> </p>
-		<p>Not Registered yet? <a href="registration.htm">Register</a> </p>
+			${MSG} 
+		</div>
+		<fieldset>
+		<legend><b>Login</b></legend>
+		<table>
+			<tr>
+				<td>UserName</td>
+				<td><form:input path="userName"/></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><form:password path="password"/></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Login"></td>
+			</tr>
+			<tr>
+				<td colspan="2">Not Registered yet? <a href="registration.htm">Register</a></td>
+			</tr>
+		</table>
+		</fieldset>
 	</form:form>
 </body>
 </html>

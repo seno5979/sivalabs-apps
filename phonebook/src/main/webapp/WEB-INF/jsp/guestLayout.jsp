@@ -4,17 +4,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SivaLabs</title>
-	
-<link type="text/css" href='<spring:url value="/resources/css/style.css"/>' rel="stylesheet" />
-<link type="text/css" href='<spring:url value="/resources/jquery/css/ui-lightness/jquery-ui-1.8.16.custom.css"/>' rel="stylesheet" />	
-<script type="text/javascript" src='<spring:url value="/resources/jquery/js/jquery-1.6.2.js"/>'></script>
-<script type="text/javascript" src='<spring:url value="/resources/jquery/js/jquery-ui-1.8.16.custom.min.js"/>'></script>
-	<script>
-	$(function() {
-		//alert('jQuery initialized');
-	});
-	</script>
-<decorator:head></decorator:head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="resources/smoothmenu/ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="resources/smoothmenu/ddsmoothmenu-v.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="resources/smoothmenu/ddsmoothmenu.js">
+
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+	mainmenuid: "smoothmenu1", //menu DIV id
+	orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+	classname: 'ddsmoothmenu', //class added to menu's outer DIV
+	//customtheme: ["#1c5a80", "#18374a"],
+	contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+</script>
+
 </head>
 
 <body>
@@ -25,8 +43,9 @@
         <h2>My Experiments on Technology</h2>
     </div>
     <div id="userBanner">
-    	Welcome <a href="showUser.htm">${LOGIN_USER.fullName}</a> &nbsp; 
-    	<a href="logout.htm">Logout</a> &nbsp;
+    	Welcome Guest! &nbsp; 
+    	<a href="login.htm">Login</a> &nbsp;
+    	<a href="registration.htm">Register</a> &nbsp;
     </div>
     
     <!-- 	
@@ -75,17 +94,17 @@
     	</div>
     	 -->
     <div id="layoutCenterBody">
-    	
+    	<!-- 
     	<div id="layoutNavigation">
         	<div class="navTitle"><h3>Navigation</h3></div>
             <ul>
                <li><a href="home.htm">Home</a></li>
                 <li><a href="showUser.htm">My Profile</a></li>
-                <li><a href="changePwd.htm">Change Password</a></li>
-                <li><a href="phonebook.htm">PhoneBook</a></li>
+                <li><a href="changePwd">Change Password</a></li>
                 <li><a href="logout.htm">Logout</a></li>                
             </ul>
         </div>
+         -->
         <div id="layoutBodyContent">
         	<decorator:body></decorator:body>
         </div>

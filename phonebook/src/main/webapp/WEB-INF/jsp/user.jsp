@@ -4,23 +4,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>MyAccount</title>
+<title>My Profile</title>
 </head>
 <body>
 	<form:form method="post" action="updateUser.htm" commandName="user">
-		<p>
+		<div class="error">
 			<form:errors path="*"></form:errors>
-			${MSG}
-		</p>
+			${MSG} 
+		</div>
+		<fieldset>
+		<legend><b>My Profile</b></legend>
 		<form:hidden path="userId"/>
 		<form:hidden path="password"/>
-		<p>UserName : <form:input path="userName" readonly="true"/></p>
-		<p>FirstName : <form:input path="firstName"/></p>
-		<p>LastName : <form:input path="lastName"/></p>
-		<p>EmailId : <form:input path="emailId"/></p>
-		
-		<p><input type="submit" value="Save">
-		<a href="home.htm">Home</a> </p>
+		<table>
+			<tr>
+				<td>UserName</td>
+				<td><form:input path="userName" readonly="true"/></td>
+			</tr>
+			<tr>
+				<td>FirstName</td>
+				<td><form:input path="firstName"/></td>
+			</tr>
+			<tr>
+				<td>LastName</td>
+				<td><form:input path="lastName"/></td>
+			</tr>
+			<tr>
+				<td>EmailId</td>
+				<td><form:input path="emailId"/></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Save">
+				</td>
+			</tr>
+		</table>
+		</fieldset>
 	</form:form>
 </body>
 </html>

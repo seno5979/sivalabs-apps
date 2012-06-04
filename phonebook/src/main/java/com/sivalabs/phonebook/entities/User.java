@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 public class User 
-{
+{ 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer userId;
@@ -90,5 +90,8 @@ public class User
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
-	
+	public String getFullName()
+	{
+		return firstName+" "+lastName;
+	}
 }

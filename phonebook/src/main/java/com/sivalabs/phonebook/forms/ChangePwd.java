@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
  *
  */ 
 public class ChangePwd 
-{
+{ 
 	@NotNull(message="Password should not be null")
 	@Size(min=5, max=25, message="Password should be 5 to 25 chars")
 	private String pwd;

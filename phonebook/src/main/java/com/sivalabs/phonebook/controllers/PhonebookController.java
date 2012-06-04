@@ -32,13 +32,18 @@ public class PhonebookController
 	@Autowired
 	private PhonebookService phonebookService;
 	
+	@RequestMapping(value="/phonebook")
+	public String phonebook(Model model) {
+		return "phonebook";
+	}
+	
 	@RequestMapping("/searchContacts")
 	public String searchContacts(@RequestParam(value="searchCriteria", defaultValue="") String name,
 			HttpServletRequest request) {
 		Integer userId = ((User)request.getSession().getAttribute("LOGIN_USER")).getUserId();
 		List<Contact> contacts = phonebookService.searchUserContacts(userId, name);
 		request.setAttribute("SEARCH_CONTACTS_REULTS", contacts);
-		return "home";
+		return "phonebook";
 	}
 	
 	@RequestMapping("/newContactForm")
@@ -60,7 +65,7 @@ public class PhonebookController
 		contact.setUser((User)request.getSession().getAttribute("LOGIN_USER"));
 		
 		phonebookService.addContact(userId, contact);
-		redirectAttributes.addAttribute("MSG", "Contact Saved Successfully"); 		
+		redirectAttributes.addFlashAttribute("MSG", "Contact Saved Successfully"); 		
 		return "redirect:searchContacts.htm";
 	}
 	
@@ -87,7 +92,7 @@ public class PhonebookController
 			return "editContact";
 		}
 		phonebookService.updateContact(contact);
-		redirectAttributes.addAttribute("MSG", "Contact Updated Successfully"); 	
+		redirectAttributes.addFlashAttribute("MSG", "Contact Updated Successfully"); 	
 		return "redirect:searchContacts.htm";
 	}
 	
@@ -97,7 +102,7 @@ public class PhonebookController
 			Model model, HttpServletRequest request) {
 		System.err.println("contactId:"+contactId);
 		phonebookService.deleteContact(contactId);
-		redirectAttributes.addAttribute("MSG", "Contact Deleted Successfully"); 		
+		redirectAttributes.addFlashAttribute("MSG", "Contact Deleted Successfully"); 		
 		return "redirect:searchContacts.htm";
 	}
 }

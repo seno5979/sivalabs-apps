@@ -5,9 +5,9 @@
 		<pattern>/*</pattern>
 	</decorator>
 
-	<!-- <decorator name="guestViewDecorator" page="/WEB-INF/jsp/guestLayout.jsp">
+	<decorator name="guestViewDecorator" page="/WEB-INF/jsp/guestLayout.jsp">
 		<pattern>/login.htm</pattern>
 		<pattern>/register.htm</pattern>
-	</decorator> -->
+	</decorator>
 
 </decorators>

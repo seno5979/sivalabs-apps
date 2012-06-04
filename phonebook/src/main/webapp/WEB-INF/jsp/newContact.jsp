@@ -12,19 +12,38 @@
 </head>
 <body>
 	<form:form method="post" action="saveContact.htm" commandName="Contact">
-		<p>
+		<div class="error">
 			<form:errors path="*"></form:errors>
-			${MSG}
-		</p>
+			${MSG} 
+		</div>
+		<fieldset>
+		<legend><b>New Contact</b></legend>
 		<form:hidden path="contactId"/>
-		<p>FirstName : <form:input path="firstName"/></p>
-		<p>LastName : <form:input path="lastName"/></p>
-		<p>EmailId : <form:input path="emailId"/></p>
-		<p>Phone : <form:input path="phone"/></p>
-		
-		<p><input type="submit" value="Save"> 
-			<a href="searchContacts.htm">Back</a>
-		</p>
+		<table>
+			<tr>
+				<td>FirstName</td>
+				<td><form:input path="firstName"/></td>
+			</tr>
+			<tr>
+				<td>LastName</td>
+				<td><form:input path="lastName"/></td>
+			</tr>
+			<tr>
+				<td>EmailId</td>
+				<td><form:input path="emailId"/></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><form:input path="phone"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Save">
+					<a href="searchContacts.htm">Back</a>
+				</td>
+			</tr>
+		</table>
+		</fieldset>
 	</form:form>
 </body>
 </html>
