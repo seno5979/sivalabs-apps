@@ -4,6 +4,13 @@
   http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
  
+ <!-- <parent>
+  	<groupId>com.sivalabs</groupId>
+  	<artifactId>sivalabs-parent-pom</artifactId>
+  	<version>0.1</version>
+  	<relativePath>./parent-pom.xml</relativePath>
+  </parent>
+   -->
   <groupId>com.sivalabs</groupId>
   <artifactId>resteasy-demo</artifactId>
   <version>0.1</version>
