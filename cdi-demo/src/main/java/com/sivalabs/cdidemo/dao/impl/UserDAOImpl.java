@@ -34,10 +34,9 @@ public class UserDAOImpl implements UserDAO
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Integer create(User user)
 	{
-		System.out.println(entityManager.getMetamodel());
-		 entityManager.persist(user);
-		 entityManager.flush();
-		 return user.getUserId();
+		entityManager.persist(user);
+		entityManager.flush();
+		return user.getUserId();
 	}
 
 	@Override

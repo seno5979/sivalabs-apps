@@ -5,12 +5,9 @@ package com.sivalabs.jforum.services;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 import com.sivalabs.jforum.dao.CrudServiceBean;
 import com.sivalabs.jforum.dao.JForumEntityManager;
@@ -24,8 +21,7 @@ import com.sivalabs.jforum.entities.Topic;
 @Stateless
 public class TopicServiceBean extends CrudServiceBean<Topic>
 {
-	/*@PersistenceContext(unitName="jforum", type=PersistenceContextType.EXTENDED)
-	protected EntityManager em;*/
+	
 	@Inject
 	private JForumEntityManager jForumEntityManager;
 	
