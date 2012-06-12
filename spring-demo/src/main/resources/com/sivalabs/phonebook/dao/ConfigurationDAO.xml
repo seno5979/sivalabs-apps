@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sivalabs.phonebook.dao.ConfigurationDAO">
+
+	<resultMap id="ConfigParamResultMap" type="ConfigParam">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="value" column="VALUE" />
+	</resultMap>
+	
+	<select id="getConfigParamById" resultMap="ConfigParamResultMap" parameterType="java.lang.Integer">
+		SELECT ID, NAME, VALUE
+		FROM app_config
+		WHERE ID = #{id,jdbcType=INTEGER} 
+	</select>
+	
+	<select id="getAllConfigParams" resultMap="ConfigParamResultMap">
+		SELECT ID, NAME, VALUE
+		FROM app_config
+	</select>
+
+	<insert id="create" parameterType="ConfigParam">
+	    insert into app_config (NAME, VALUE)
+    	values (#{name,jdbcType=VARCHAR}, 
+    			#{value,jdbcType=VARCHAR}
+      			)
+	    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+	      SELECT LAST_INSERT_ID()
+	    </selectKey>
+	</insert>
+	
+	<update id="update" parameterType="ConfigParam" >
+	    update app_config
+	    set VALUE = #{value,jdbcType=VARCHAR}
+	    where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<delete id="delete" parameterType="ConfigParam" >
+	    delete from app_config
+	    where ID = #{id,jdbcType=INTEGER}
+  	</delete>
+  	
+</mapper>
