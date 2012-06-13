@@ -7,9 +7,14 @@
 <title>Login</title>
 </head>
 <body>
-	<form:form method="post" action="login" commandName="user">
+	<form method="post" action="j_spring_security_check">
 		<div class="error">
-			<form:errors path="*"></form:errors>
+			<c:if test="${not empty param.login_error}">
+		      <font color="red">
+		        Your login attempt was not successful, try again.<br/><br/>
+		        Reason: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+		      </font>
+		    </c:if>
 			${MSG} 
 		</div>
 		<fieldset>
@@ -17,11 +22,11 @@
 		<table>
 			<tr>
 				<td>UserName</td>
-				<td><form:input path="userName"/></td>
+				<td><input type='text' name='j_username' /></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><form:password path="password"/></td>
+				<td><input type='password' name='j_password'></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Login"></td>
@@ -31,6 +36,6 @@
 			</tr>
 		</table>
 		</fieldset>
-	</form:form>
+	</form>
 </body>
 </html>

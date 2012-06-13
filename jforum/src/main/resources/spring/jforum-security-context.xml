@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:cache="http://www.springframework.org/schema/cache"
@@ -25,8 +26,28 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	
 	
-</beans>
+	<http pattern="/resources/**" security="none"/>
+	<http pattern="/login*" security="none"/>
+	<http pattern="/registration*" security="none"/>
+	
+	<http>
+		<form-login login-page="/login" authentication-failure-url="/login?login_error=1"
+					default-target-url="/home"/>
+		<intercept-url pattern="/**" access="ROLE_USER"/>
+	</http>
+	
+	<authentication-manager>
+    <authentication-provider>
+      <user-service>
+        <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
+        <user name="test" password="test" authorities="ROLE_USER" />
+      </user-service>
+    </authentication-provider>
+  </authentication-manager>
+  
+</beans:beans>
