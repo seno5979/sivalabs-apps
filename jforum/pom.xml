@@ -5,7 +5,7 @@
   <groupId>com.sivalabs</groupId>
   <artifactId>jforum</artifactId>
   <version>0.1</version>
-  <packaging>pom</packaging>
+  <packaging>war</packaging>
 
   <name>jforum</name>
   <url>http://maven.apache.org</url>
@@ -19,10 +19,10 @@
 	<slf4j.version>1.6.1</slf4j.version>
   </properties>
   
-  <modules>
+  <!-- <modules>
   	<module>jforum-core</module>
   	<module>jforum-web</module>
-  </modules>
+  </modules> -->
   
   <build>
 		<finalName>${project.artifactId}</finalName>
@@ -112,20 +112,14 @@
   <dependencyManagement>
 	  <dependencies>
 	    
-	    <dependency>
+	   <!--  <dependency>
 	      <groupId>org.jboss.as</groupId>
 	      <artifactId>jboss-as-parent</artifactId>
 	      <version>7.1.1.Final</version>
 	      <type>pom</type>
 	      <scope>import</scope>
 	    </dependency>
-	   <!--   <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
-            <version>3.0.0.Final</version>
-            <type>pom</type>
-            <scope>import</scope>
-         </dependency> -->
+	    -->
 	    <dependency>
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>
@@ -179,6 +173,17 @@
 			<version>${org.springframework.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			 <groupId>org.springframework.data</groupId>
+			 <artifactId>spring-data-jpa</artifactId>
+			 <version>1.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
@@ -201,6 +206,7 @@
 			<version>5.1.16</version>
 			<scope>runtime</scope>
 		</dependency>
+		
       	<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -218,13 +224,8 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.2</version>
 		</dependency>
-		<dependency>
-		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis-spring</artifactId>
-		    <version>1.0.2</version>
-		  </dependency>
-		  
-		  <dependency>
+
+        <dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
@@ -257,8 +258,156 @@
 			<scope>provided</scope>
 		</dependency>
 		
-        		
 	  </dependencies>
-</dependencyManagement>
+	  
+	</dependencyManagement>
   		
+  	<dependencies>
+  	
+	  	<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	    </dependency>
+	    
+	    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			 <groupId>org.springframework.data</groupId>
+			 <artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+		 <dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+      	<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<version>1.0.1.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.1.2</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+	  		<artifactId>hibernate-validator</artifactId>
+	  		<version>4.2.0.FINAL</version>
+	  		<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+            
+            
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+  </dependencies>
 </project>
