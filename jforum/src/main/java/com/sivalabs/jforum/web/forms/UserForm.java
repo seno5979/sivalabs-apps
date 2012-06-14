@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import com.sivalabs.jforum.entities.User;
 import com.sivalabs.jforum.web.validation.ValidationGroups;
 
 
@@ -35,7 +36,7 @@ public class UserForm
     		groups={Default.class, ValidationGroups.CreateUser.class, ValidationGroups.UpdateUser.class})
 	private String firstName;
     private String lastName;
-    private String email;
+    private String emailId;
     
     @Override
     public String toString() {
@@ -72,11 +73,13 @@ public class UserForm
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getEmail() {
-		return email;
+	
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public static UserForm createDummyUser(int userId) {
@@ -86,8 +89,19 @@ public class UserForm
 		userForm.setPassword("password"+userId);
 		userForm.setFirstName("firstName"+userId);
 		userForm.setLastName(null);
-		userForm.setEmail("email"+userId);
+		userForm.setEmailId("email"+userId);
 		return userForm;
+	}
+	
+	public User getAsUser() {
+		User user = new User();
+		user.getUserLogon().setUserName(this.getUserName());
+		user.getUserLogon().setPassword(this.getPassword());
+		user.setFirstName(this.getFirstName());
+		user.setLastName(this.getLastName());
+		user.setEmailId(this.getEmailId());
+		user.getUserLogon().setUser(user);
+		return user;
 	}
     
     

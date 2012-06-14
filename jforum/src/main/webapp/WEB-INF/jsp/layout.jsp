@@ -4,17 +4,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SivaLabs</title>
-	
+
 <link type="text/css" href='<spring:url value="/resources/css/style.css"/>' rel="stylesheet" />
 <link type="text/css" href='<spring:url value="/resources/jquery/css/ui-lightness/jquery-ui-1.8.16.custom.css"/>' rel="stylesheet" />	
 <script type="text/javascript" src='<spring:url value="/resources/jquery/js/jquery-1.6.2.js"/>'></script>
 <script type="text/javascript" src='<spring:url value="/resources/jquery/js/jquery-ui-1.8.16.custom.min.js"/>'></script>
-	<script>
+
+<script>
 	$(function() {
 		//alert('jQuery initialized');
 	});
-	</script>
-<decorator:head></decorator:head>
+</script>
+
+<decorator:head/>
 </head>
 
 <body>

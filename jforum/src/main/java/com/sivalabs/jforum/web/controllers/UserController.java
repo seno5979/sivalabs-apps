@@ -3,6 +3,8 @@
  */
 package com.sivalabs.jforum.web.controllers;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,9 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sivalabs.jforum.entities.Link;
 import com.sivalabs.jforum.entities.User;
+import com.sivalabs.jforum.services.LinkShareService;
 import com.sivalabs.jforum.services.UserService;
 import com.sivalabs.jforum.web.forms.ChangePwd;
+import com.sivalabs.jforum.web.forms.LoginForm;
+import com.sivalabs.jforum.web.forms.UserForm;
 
 
 /** 
@@ -27,13 +33,19 @@ import com.sivalabs.jforum.web.forms.ChangePwd;
  *
  */
 @Controller
-public class UserController 
+public class UserController extends BaseController
 {
 	@Inject
 	private UserService userService;
 
+	@Inject private LinkShareService linkShareService;
+	
 	@RequestMapping(value="/home")
-	public String home(Model model) {
+	public String home(Model model,HttpServletRequest request) {
+		User loginUser = userService.getUser(1);
+		List<Link> allLinks = this.linkShareService.findAllLinks();
+		model.addAttribute("ALL_LINKS", allLinks);
+		WebUtils.setLoginUser(request, loginUser);
 		return "home";
 	}
 	
@@ -46,35 +58,45 @@ public class UserController
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginForm(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("user", new LoginForm());
 		return "login";
 	}
-	
+	/*
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(User user, HttpServletRequest request, BindingResult result) {
-		User loginUser = this.userService.login(user.getUserName(), user.getPassword());
+	public String login(LoginForm loginForm, HttpServletRequest request, BindingResult result) {
+		User loginUser = this.userService.login(loginForm.getUserName(), loginForm.getPassword());
 		if(loginUser!=null){
-			request.getSession().setAttribute("LOGIN_USER", loginUser);
+			//request.getSession().setAttribute("LOGIN_USER", loginUser);
+			WebUtils.setLoginUser(request, loginUser);
 			return "redirect:home";
 		}else{
 			result.addError(new ObjectError("user", "Invalid UserName & Password."));
 			return "login";
 		}
-	}
+	}*/
 	
 	@RequestMapping(value="/registration", method=RequestMethod.GET)
 	public String registrationForm(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("user", new UserForm());
 		return "registration";
 	}
 	
 	@RequestMapping(value="/registration", method=RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("user") User user, BindingResult result,
+	public String register(@Valid @ModelAttribute("user") UserForm userForm, BindingResult result,
 			RedirectAttributes redirectAttributes,
 			HttpServletRequest request) {
 		if(result.hasErrors()){
 			return "registration";
 		}
+		/*User user = new User();
+		user.getUserLogon().setUserName(userForm.getUserName());
+		user.getUserLogon().setPassword(userForm.getPassword());
+		user.setFirstName(userForm.getFirstName());
+		user.setLastName(userForm.getLastName());
+		user.setEmailId(userForm.getEmailId());*/
+		User user = userForm.getAsUser();
+		//user.getUserLogon().setUser(user);
+		
 		User savedUser = this.userService.saveUser(user);
 		if(savedUser!=null){
 			redirectAttributes.addFlashAttribute("MSG", "Registered Successfully"); 		
@@ -87,7 +109,7 @@ public class UserController
 	
 	@RequestMapping(value="/showUser", method=RequestMethod.GET)
 	public String showUserAccount(Model model, HttpServletRequest request) {
-		User loginUser = (User) request.getSession().getAttribute("LOGIN_USER");;
+		User loginUser = WebUtils.getLoginUser(request);// (User) request.getSession().getAttribute("LOGIN_USER");;
 		model.addAttribute("user",loginUser);
 		return "user";
 	}
@@ -132,7 +154,7 @@ public class UserController
 			return "changePwd";
 		}
 		User loginUser = WebUtils.getLoginUser(request);
-		if(!changePwd.getPwd().equals(loginUser.getPassword())){
+		if(!changePwd.getPwd().equals(loginUser.getUserLogon().getPassword())){
 			result.addError(new ObjectError("retypePassword", "Current Password doesn't match"));
 		}
 		if(result.hasErrors()){

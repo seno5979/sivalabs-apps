@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.sivalabs.phonebook.entities.Contact;
-import com.sivalabs.phonebook.entities.User;
 import com.sivalabs.phonebook.services.PhonebookService;
 import com.sivalabs.phonebook.services.UserService;
 

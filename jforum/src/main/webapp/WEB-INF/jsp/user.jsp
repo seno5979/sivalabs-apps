@@ -15,11 +15,12 @@
 		<fieldset>
 		<legend><b>My Profile</b></legend>
 		<form:hidden path="userId"/>
-		<form:hidden path="password"/>
+		<form:hidden path="userLogon.userLoginId"/>
+		<form:hidden path="userLogon.password"/>
 		<table>
 			<tr>
 				<td>UserName</td>
-				<td><form:input path="userName" readonly="true"/></td>
+				<td><form:input path="userLogon.userName" readonly="true"/></td>
 			</tr>
 			<tr>
 				<td>FirstName</td>

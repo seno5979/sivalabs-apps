@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sivalabs.jforum.entities.User;
 import com.sivalabs.jforum.services.UserService;
-import com.sivalabs.jforum.web.forms.LoginRequest;
+import com.sivalabs.jforum.web.forms.LoginForm;
 import com.sivalabs.jforum.web.validation.ValidationGroups;
 
 /**
  * @author skatam
  *
  */
-@Controller
-@RequestMapping("/rest/")
+//@Controller
+//@RequestMapping("/rest/")
 public class UserRestController 
 {
 	@Inject
@@ -33,7 +33,7 @@ public class UserRestController
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST, produces="application/xml")
 	@ResponseBody
-	public User login(@Valid LoginRequest loginRequest) {
+	public User login(@Valid LoginForm loginRequest) {
 		System.out.println(loginRequest.getUserName()+":"+loginRequest.getPassword());
 		User user = userService.login(loginRequest.getUserName(), loginRequest.getPassword());
 		return user;
