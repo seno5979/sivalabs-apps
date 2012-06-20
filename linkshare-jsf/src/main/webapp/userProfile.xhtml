@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/templates/default.xhtml">
+   
+   <ui:define name="content">
+      
+	<h:form >
+		
+		<h:panelGrid columns="2">
+			<h:outputLabel value="UserName" />
+			<h:inputText value="#{userController.currentUser.userName}"  
+						 required="true"
+						 requiredMessage="UserName is required"/>
+			
+			<h:outputLabel value="Password" />
+			<h:inputSecret value="#{userController.currentUser.password}"  
+						 required="true"
+						 requiredMessage="Password is required"/>
+			
+			<h:outputLabel value="Name" />
+			<h:inputText value="#{userController.currentUser.name}"  
+						 required="true"
+						 requiredMessage="Name is required"/>
+			
+			<h:outputLabel value="Email" />
+			<h:inputText value="#{userController.currentUser.email}"  
+						 required="true"
+						 requiredMessage="Email is required"/>
+						 
+			
+		</h:panelGrid>
+	</h:form>
+            
+   </ui:define>
+   
+</ui:composition>
+

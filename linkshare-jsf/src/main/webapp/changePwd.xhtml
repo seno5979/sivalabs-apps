@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/templates/default.xhtml">
+   
+   <ui:define name="content">
+      
+	<h:form >
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Current Password" />
+			<h:inputSecret value="#{userController.changePwdForm.password}"  
+						 required="true"
+						 requiredMessage="Current Password is required"/>
+			
+			<h:outputLabel value="New Password" />
+			<h:inputSecret value="#{userController.changePwdForm.newPassword}"  
+						 required="true"
+						 requiredMessage="New Password is required"/>
+			<h:outputLabel value="Re-type New Password" />
+			<h:inputSecret value="#{userController.changePwdForm.retypePassword}"  
+						 required="true"
+						 requiredMessage="Re-type Password is required"/>
+			
+			<h:commandButton action="#{userController.changePwd}" value="Change Password" />			 
+			
+		</h:panelGrid>
+	</h:form>
+            
+   </ui:define>
+   
+</ui:composition>

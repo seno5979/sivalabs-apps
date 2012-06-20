@@ -1,0 +1,187 @@
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	background:#CCCCCC;
+}
+#container {
+	width:1000px;	
+	margin: 0 auto -30px;
+	background:#FFFFFF;	
+	position:relative;
+    min-height:100%;
+    _height:100%; /* for IE6 as it doesnt understand min-height */
+     
+}
+
+#userBanner
+{
+	width:1000px;
+	height:20px;
+	text-align: right;
+}
+#layoutHeader {
+	width:1000px;
+	height:100px;
+	
+	background: -moz-linear-gradient(#1c5a80, white); /* FF 3.6+ */
+	background: -ms-linear-gradient(#1c5a80, white); /* IE10 */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1c5a80), color-stop(100%, #ffffff)); /* Safari 4+, Chrome 2+ */
+	background: -webkit-linear-gradient(#1c5a80, white); /* Safari 5.1+, Chrome 10+ */
+	background: -o-linear-gradient(#1c5a80, white); /* Opera 11.10 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c5a80', endColorstr='#ffffff'); /* IE6 & IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c5a80', endColorstr='#ffffff')"; /* IE8+ */
+	background: linear-gradient(#1c5a80, white); /* the standard */
+	
+}
+
+#layoutMenu {
+	width:1000px;
+	height:20px;
+}
+
+#layoutHeader h1 {
+	color:#FFFFFF;
+	font-size:36px;
+	font-weight:bold;
+	padding:20px 20px 0 20px;
+}
+#layoutHeader h2 {
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	padding:0 20px 0 20px;
+}
+#layoutHeader h1 a {
+	color:#FFFFFF;
+	font-size:36px;
+	font-weight:bold;
+	text-decoration:none;
+}
+#layoutHeader h2 a {
+	color:#FFFFFF;
+	font-size:14px;
+	font-weight:bold;
+	text-decoration:none;
+}
+#layoutCenterBody {
+	margin:10px 10px 0 2px;
+}
+#layoutNavigation {
+	border:1px solid #15190A;
+	width:200px;
+	float:left;
+	background:#1c5a80;
+	margin-top: 2px;
+	margin-left:0px;
+}
+#layoutNavigation .navTitle {
+	background:#18374a;
+	height:30px;
+}
+#layoutNavigation .navTitle h3 {
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:bold;
+	padding:2px 5px;
+}
+#layoutBodyContent {
+	
+	min-height: 400px;
+	height: auto;
+}
+#layoutBodyContent a {
+	color:#7A7D5F;
+	font-size:12px;
+	font-weight:bold;
+}
+#layoutBodyContent h1{
+	color:#15190A;
+	font-weight:bold;
+	font-size:24px;
+}
+#layoutBodyContent h2{
+	color:#15190A;
+	font-weight:bold;
+	font-size:14px;
+	margin-top:10px;
+}
+#layoutBodyContent p {
+	margin-top:10px;
+}
+.clearer {
+	clear:both;
+	height:10px;
+}
+#layoutFooter {
+	height:30px;
+	background-color: #1c5a80;
+	color: #FFFFFF;
+	text-align:center;
+	font-weight: bold;
+}
+#layoutFooter p {
+	padding-top:10px;
+	
+}
+#layoutFooter a {
+	color: #FFFFFF;
+	text-decoration:underline;
+}
+#layoutFooter a:hover {	
+	text-decoration:none;
+}
+
+
+/* left navigation menu begins */
+#layoutNavigation ul {
+	list-style-type: none;
+	margin:5px 0;
+}
+#layoutNavigation a {
+	display: block;
+	width: 180px;
+	background-color: #1c5a80;
+	border-bottom: 1px dotted #15190A;
+	margin:7px 5px;
+}
+#layoutNavigation a:link, #layoutNavigation a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+#layoutNavigation a:hover {
+	background-color: #18374a;
+	color: #fff;
+}
+/* left navigation menu ends */
+
+
+.error
+{
+	color: red;
+}
+
+.stripeMe  {
+	width: 100%;
+	border: 1px solid #cef;
+	text-align: left; 
+}
+.stripeMe th {
+	font-weight: bold;
+	background-color: #acf;
+	border-bottom: 1px solid #cef; 
+}
+.stripeMe td, .stripeMe th {
+	padding: 4px 5px; 
+}
+	
+.stripeMe .odd {
+	background-color: #def; 
+}
+.stripeMe .odd td {
+	border-bottom: 1px solid #cef; 
+}
+	

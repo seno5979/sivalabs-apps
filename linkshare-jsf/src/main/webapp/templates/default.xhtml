@@ -1,0 +1,71 @@
+<!DOCTYPE html[
+    <!ENTITY nbsp "&#160;">
+]>
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>LinkShare</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <h:outputStylesheet name="css/style.css"/>
+     
+   </h:head>
+   <h:body>
+      
+<div id="container">
+	
+    <div id="layoutHeader">
+    	<h1><a href="#">LinkShare</a></h1>
+        <h2>Keep your bookmarks and share to friends.</h2>
+    </div>
+    <div id="userBanner">
+    	<h:form>
+    	Welcome <h:link outcome="userProfile" value="#{userController.currentUser.name}"/> &nbsp;
+			<h:link outcome="changePwd" value="Change Password"/> &nbsp;
+    	<h:commandLink action="#{userController.logout()}" value="Logout" />
+    	</h:form>
+    </div>
+    
+    
+    <div id="layoutMenu">
+			<h:form>			
+				<p:menubar>        
+					<p:menuitem value="Home" url="home.jsf"  />
+					<p:menuitem value="MyAccount" url="userProfile.jsf"  />
+					<p:menuitem value="ContactUs" url="home.jsf"  />
+	    		</p:menubar>
+			</h:form>
+    </div>
+    	 
+    <div id="layoutCenterBody">
+    	<!-- 
+    	<div id="layoutNavigation">
+        	<div class="navTitle"><h3>Navigation</h3></div>
+            <ul>
+               <li><a href="home">Home</a></li>
+                <li><a href="showUser">My Profile</a></li>
+                <li><a href="changePwd">Change Password</a></li>
+                <li><a href="logout">Logout</a></li>                
+            </ul>
+        </div>
+    	 -->
+        <div id="layoutBodyContent">
+        	<br/>
+        	<ui:insert name="content">
+               [Template content will be inserted here]
+            </ui:insert>
+        </div>
+    </div>
+    <div class="clearer"></div>
+    <div id="layoutFooter">
+    	<p>
+    		Copyright © 2012. <a href="http://sivalabs.blogspot.com" title="SivaLabs">SivaLabs</a>
+        </p>
+    </div>
+</div>
+
+   </h:body>
+</html>
