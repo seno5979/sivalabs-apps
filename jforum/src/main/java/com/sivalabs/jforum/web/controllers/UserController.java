@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,11 +43,18 @@ public class UserController extends BaseController
 	@Inject private LinkShareService linkShareService;
 	
 	@RequestMapping(value="/home")
-	public String home(Model model,HttpServletRequest request) {
-		User loginUser = userService.getUser(1);
+	public String home(Model model,HttpServletRequest request) 
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String userName = auth.getName();
+	    System.err.println(userName);
+		User loginUser = userService.getUserByUserName(userName);
+		System.err.println(loginUser);
+		WebUtils.setLoginUser(request, loginUser);
+		
 		List<Link> allLinks = this.linkShareService.findAllLinks();
 		model.addAttribute("ALL_LINKS", allLinks);
-		WebUtils.setLoginUser(request, loginUser);
+		
 		return "home";
 	}
 	

@@ -1,12 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
-
-<h:head></h:head> 
-<body> 
-	Welcome <a href="userProfile.xhtml">#{LOGIN_USER_KEY.userName}</a> &nbsp;
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="template.xhtml">
+   
+   <ui:define name="content">
+      Welcome <a href="userProfile.xhtml">#{LOGIN_USER_KEY.userName}</a> AA #{userController.currentUser.firstName}BB
 			<a href="changePwd.xhtml">Change Password</a>
 	<h:form>
 	<h1>Forums</h1>
@@ -16,5 +15,6 @@
 		</h:column>
 	</h:dataTable>
 	</h:form>
-</body> 
-</html>
+   </ui:define>
+   
+</ui:composition>

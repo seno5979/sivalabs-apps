@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sivalabs.jforum.entities.User;
-import com.sivalabs.jforum.entities.UserLogon;
 import com.sivalabs.jforum.repositories.UserRepository;
 
 /**
@@ -26,12 +25,7 @@ public class UserService
 	private UserRepository userRepository;
 	
 	public User login(String userName, String password) {
-		 /*UserLogon userLogon = userRepository.login(userName, password);
-		 if(userLogon !=null){
-			 return userLogon.getUser();
-		 }
-		 return null;*/
-		return userRepository.findOne(1);
+		 return userRepository.login(userName, password);
 	}
 	
 	public User saveUser(User user) {
@@ -53,5 +47,9 @@ public class UserService
 	public boolean changePwd(Integer userId, String pwd, String newPwd)
 	{
 		return userRepository.changePwd(userId, pwd, newPwd)!=0;
+	}
+
+	public User getUserByUserName(String userName) {
+		return userRepository.findByUserName(userName);
 	}
 }

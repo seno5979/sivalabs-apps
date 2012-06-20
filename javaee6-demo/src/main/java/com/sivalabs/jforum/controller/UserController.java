@@ -67,7 +67,9 @@ public class UserController
 
 	public User getCurrentUser()
 	{
+		System.out.println("ee6-demo:"+this.hashCode()+":"+currentUser);
 		currentUser =JSFUtils.getCurrentUser();
+		System.out.println("after-ee6-demo:"+this.hashCode()+":"+currentUser);
 		return currentUser;
 	}
 	public String changePwd()

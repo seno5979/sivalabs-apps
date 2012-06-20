@@ -26,7 +26,8 @@ import com.sivalabs.jforum.web.validation.ValidationGroups;
  * @author skatam
  */
 @Entity
-public class User implements Serializable {
+public class User implements Serializable 
+{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,7 +56,8 @@ public class User implements Serializable {
     @Column(name = "emailId")
     private String emailId;
     @Column(name = "active")
-    private Boolean active;  
+    private Boolean active;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "startedBy")
     private List<Topic> topicList = new ArrayList<Topic>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postedBy")

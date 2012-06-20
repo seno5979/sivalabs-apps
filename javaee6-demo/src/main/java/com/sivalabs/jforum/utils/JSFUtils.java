@@ -17,7 +17,9 @@ public class JSFUtils
 {
 	public static HttpSession getSession()
 	{
-		return (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		HttpSession  session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		System.out.println("Session: "+session.hashCode());
+		return session;
 	}
 	
 	public static void setSessionAttribute(String key , Object value)
